@@ -4,7 +4,6 @@ import AboutPage from './pages/aboutPage';
 function App() {
   return (
     <>
-      <HomePage />
       <AboutPage />
     </>
   );

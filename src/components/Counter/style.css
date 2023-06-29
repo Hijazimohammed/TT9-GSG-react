@@ -1,0 +1,24 @@
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+button {
+  width: 2rem;
+  height: 2rem;
+  background: tomato;
+  border: none;
+  cursor: pointer;
+}
+button:nth-child(2) {
+  background-color: #dcdc;
+}
+.counter {
+  display: flex;
+  width: 10rem;
+  flex-direction: row;
+}

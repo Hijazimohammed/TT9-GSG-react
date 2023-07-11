@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './style.css';
 
-export default class Footer extends Component {
-  render() {
-    return <footer>Footer</footer>;
-  }
-}
+export const Footer = () => {
+  return <footer>Footer</footer>;
+};

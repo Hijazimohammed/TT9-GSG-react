@@ -1,19 +1,16 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.view {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
-
-body {
-  min-height: 100vh;
+.view h2,
+p {
+  padding: 0.5rem 1rem;
 }
-
-input,
-textarea {
-  padding: 10px;
-  width: 300px;
-}
-button {
+.view_btn {
   padding: 0.5rem;
   border: 1px solid #ddd;
   margin: 0.2rem;

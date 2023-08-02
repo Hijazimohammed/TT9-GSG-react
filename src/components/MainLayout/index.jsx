@@ -1,5 +1,21 @@
 import React from 'react';
+import { Header } from '../Header';
+import Footer from '../Footer';
 
-export const MainLayout = ({ children }) => {
-  return <>{children}</>;
+const MainLayout = ({ children }) => {
+  return (
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
+      <Header />
+      {children}
+      <Footer />
+    </div>
+  );
 };
+
+export default MainLayout;

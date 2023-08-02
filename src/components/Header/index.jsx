@@ -1,24 +1,35 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './style.css';
+import { PATHS } from '../../router/paths';
 
 export const Header = () => {
   return (
-    <header>
+    <header className='header'>
+      <h1>Header</h1>
+
       <nav>
         <ul>
           <li>
-            <NavLink to='/'>Home</NavLink>{' '}
+            <NavLink to={PATHS.HOME}>
+              {({ isActive, isPending }) => (isActive ? <u>Home</u> : 'Home')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to='posts'>Posts</NavLink>
+            <NavLink to={PATHS.PRODUCTS.ROOT}>
+              {({ isActive, isPending }) =>
+                isActive ? <u>PRODUCTS</u> : 'PRODUCTS'
+              }
+            </NavLink>
           </li>
+          {/*           
           <li>
-            <NavLink to='about'>About</NavLink>
-          </li>
-          <li>
-            <NavLink to='contact'>Contact</NavLink>
-          </li>
+            <NavLink to={PATHS.STORES.ROOT}>
+              {({ isActive, isPending }) =>
+                isActive ? <u>Stores</u> : 'Stores'
+              }
+            </NavLink>
+          </li> */}
         </ul>
       </nav>
     </header>

@@ -1,6 +1,7 @@
-import React from 'react';
 import './style.css';
 
-export const Footer = () => {
-  return <footer>Footer</footer>;
+const Footer = () => {
+  return <footer className='footer'>copyright GSG TT9 &copy;</footer>;
 };
+
+export default Footer;

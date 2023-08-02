@@ -1,25 +1,43 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import PostsPage from './pages/PostsPage';
+import { useRef } from 'react';
+import CodeInput from './CodeInput';
+import Container from './components/Container';
+import MainLayout from './components/MainLayout';
+import Router from './router';
+import { ProductProvider, useProductContext } from './context/ProductContext';
 
-export const App = () => {
+export default function App() {
+  const refs = useRef([]);
+  // const { products } = useProductContext();
+  const handleChange = (e) => {
+    if (
+      e.target.value.length === 1 &&
+      e.target.name < refs.current.length - 1
+    ) {
+      refs.current[+e.target.name + 1].focus();
+    }
+    if (e.target.value.length === 0 && e.target.name > 0) {
+      refs.current[+e.target.name - 1].focus();
+    }
+  };
+  // console.log(products);
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path='posts' element={<PostsPage />} />
-        <Route path='about' element={<AboutPage />} />
-        <Route path='contact' element={<ContactPage />} />
-        <Route path='404' element={<h1>Page Not Found</h1>} />
-        <Route path='*' element={<Navigate to={'404'} replace={true} />} />
-      </Routes>
-      <Footer />
-    </>
+    <ProductProvider>
+      <div className='App'>
+        <MainLayout>
+          <Container>
+            {/* {[...Array.from(Array(10).keys())].map((ref, index) => (
+            <input
+              key={index}
+              ref={(ref) => (refs.current[index] = ref)}
+              name={index}
+              type='text'
+              onChange={handleChange}
+            />
+          ))} */}
+            <Router />
+          </Container>
+        </MainLayout>
+      </div>
+    </ProductProvider>
   );
-};
+}

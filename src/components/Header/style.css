@@ -1,13 +1,23 @@
 .header {
-  background-color: #fff;
   border-bottom: 1px solid #eee;
   height: 60px;
   padding: 0 20px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header_light {
+  background-color: #fff;
+  color: #000;
 }
 
+.header_dark {
+  background-color: #000;
+  color: #fff;
+}
 .header h1 {
-  color: #333;
+  color: inherit;
   display: inline-block;
   font-size: 24px;
   font-weight: 300;
@@ -16,12 +26,12 @@
   vertical-align: top;
 }
 
-.header nav {
+/* .header nav {
   display: inline-block;
   float: right;
   margin: 0;
   padding: 0;
-}
+} */
 
 .header nav ul {
   list-style: none;
@@ -36,7 +46,7 @@
 }
 
 .header nav ul li a {
-  color: #333;
+  color: inherit;
   display: inline-block;
   font-size: 14px;
   font-weight: 300;
@@ -47,4 +57,12 @@
 
 .header nav ul li a.active {
   color: red;
+}
+
+.header nav ul li button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: inherit;
+  color: inherit;
 }

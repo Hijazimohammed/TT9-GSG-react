@@ -4,9 +4,12 @@ import { PATHS } from '../../router/paths';
 import './style.css';
 import { Body1, H1, H2 } from '../../components/Typography';
 import { useProductContext } from '../../context/ProductContext';
+import { useAuthContext } from '../../context/AuthContext';
+import { ROLES } from '../../constants';
 
 export const ProductPage = () => {
   const { product, isLoading, getSingleProduct } = useProductContext();
+  const { role } = useAuthContext();
   const navigate = useNavigate();
   const { id } = useParams();
   const handleEdit = () => {
@@ -28,7 +31,10 @@ export const ProductPage = () => {
           <Body1>{product.quantity}</Body1>
         </div>
       )}
-      <button className='view_btn' onClick={handleEdit}>
+      <button
+        disabled={role == ROLES.GUEST}
+        className='view_btn'
+        onClick={handleEdit}>
         Edit
       </button>
     </>

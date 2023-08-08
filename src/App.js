@@ -1,39 +1,17 @@
-import { useRef } from 'react';
-import CodeInput from './CodeInput';
 import Container from './components/Container';
 import MainLayout from './components/MainLayout';
 import Router from './router';
-import { ProductProvider, useProductContext } from './context/ProductContext';
+import { ProductProvider } from './context/ProductContext';
+import { useThemeContext } from './context/ThemeContext';
+import { THEMES } from './constants';
 
 export default function App() {
-  const refs = useRef([]);
-  // const { products } = useProductContext();
-  const handleChange = (e) => {
-    if (
-      e.target.value.length === 1 &&
-      e.target.name < refs.current.length - 1
-    ) {
-      refs.current[+e.target.name + 1].focus();
-    }
-    if (e.target.value.length === 0 && e.target.name > 0) {
-      refs.current[+e.target.name - 1].focus();
-    }
-  };
-  // console.log(products);
+  const { theme } = useThemeContext();
   return (
     <ProductProvider>
-      <div className='App'>
+      <div className={theme == THEMES.LIGHT ? 'light' : 'dark'}>
         <MainLayout>
           <Container>
-            {/* {[...Array.from(Array(10).keys())].map((ref, index) => (
-            <input
-              key={index}
-              ref={(ref) => (refs.current[index] = ref)}
-              name={index}
-              type='text'
-              onChange={handleChange}
-            />
-          ))} */}
             <Router />
           </Container>
         </MainLayout>

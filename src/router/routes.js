@@ -5,11 +5,21 @@ import { ProductsPage } from '../pages/ProductsPage';
 import { ProductPage } from '../pages/ProductPage';
 import { EditProductPage } from '../pages/EditProductPage';
 import { CreateProductPage } from '../pages/CreateProductsPage';
+import { Login } from '../components/Login';
+import { SignUp } from '../components/SignUp';
 
 export const routes = [
   {
     index: true,
-    element: <H1>Welcome in stores</H1>,
+    element: <H1>Welcome </H1>,
+  },
+  {
+    path: PATHS.LOGIN,
+    element: <Login />,
+  },
+  {
+    path: PATHS.SIGNUP,
+    element: <SignUp />,
   },
   {
     path: PATHS.PRODUCTS.ROOT,
@@ -32,6 +42,10 @@ export const routes = [
         element: <CreateProductPage />,
       },
     ],
+  },
+  {
+    path: PATHS.ADMIN.ROOT,
+    element: <H1>Welcome in Admin Page</H1>,
   },
 
   {

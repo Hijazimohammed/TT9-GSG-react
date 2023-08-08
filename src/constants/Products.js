@@ -1,4 +1,6 @@
-export const PRODUCT_COLUMNS = (handleDelete, handleEdit) => [
+import { ROLES } from '.';
+
+export const PRODUCT_COLUMNS = (handleDelete, handleEdit, role) => [
   {
     key: 'id',
     title: 'Id',
@@ -16,8 +18,16 @@ export const PRODUCT_COLUMNS = (handleDelete, handleEdit) => [
     title: 'Actions',
     render: (data) => (
       <div onClick={(e) => e.stopPropagation()}>
-        <button onClick={() => handleDelete(data.id)}>delete</button>
-        <button onClick={() => handleEdit(data.id)}>edit</button>
+        <button
+          disabled={role == ROLES.GUEST}
+          onClick={() => handleDelete(data.id)}>
+          delete
+        </button>
+        <button
+          disabled={role == ROLES.GUEST}
+          onClick={() => handleEdit(data.id)}>
+          edit
+        </button>
       </div>
     ),
   },

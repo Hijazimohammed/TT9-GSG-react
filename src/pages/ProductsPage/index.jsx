@@ -4,10 +4,13 @@ import { PRODUCT_COLUMNS } from '../../constants/Products';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../router/paths';
 import { useProductContext } from '../../context/ProductContext';
+import { useAuthContext } from '../../context/AuthContext';
+import { ROLES } from '../../constants';
 
 export const ProductsPage = () => {
   const { products, isLoading, getProducts, deleteProduct } =
     useProductContext();
+  const { role } = useAuthContext();
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
@@ -30,9 +33,11 @@ export const ProductsPage = () => {
     <div>
       <h1>Products</h1>
 
-      <button onClick={handleCreate}>Create Product</button>
+      <button disabled={role == ROLES.GUEST} onClick={handleCreate}>
+        Create Product
+      </button>
       <Table
-        columns={PRODUCT_COLUMNS(handleDelete, handleEdit)}
+        columns={PRODUCT_COLUMNS(handleDelete, handleEdit, role)}
         data={products}
         onRowClick={handleView}
         isLoading={isLoading}
